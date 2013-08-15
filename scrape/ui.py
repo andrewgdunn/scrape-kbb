@@ -30,7 +30,7 @@ def main():
     parser.add_argument('model', help='Model')
     parser.add_argument('year', help='Year')
     parser.add_argument('style', help='Style')
-    parser.add_argument('type', help='Price Type')
+    parser.add_argument('intent', help='Intent')
     parser.add_argument('mileage', help='Mileage')
 
     args = parser.parse_args()
@@ -45,7 +45,7 @@ def main():
     url += args.style + '/'
 
     parameters = {}
-    parameters['pricetype'] = args.type
+    parameters['pricetype'] = args.intent
     parameters['mileage'] = args.mileage
 
     url_requested = requests.get(url, params=parameters)
