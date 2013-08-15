@@ -55,7 +55,7 @@ def main():
 
         soup = BeautifulSoup(url_requested.text)
 
-        soup_scoped = soup.find('div', class_='value-module price-type-private-party')        
+        for div in soup.find_all('div', class_='value'):
+            prices.append(div.text)
 
-        for child in soup_scoped.children:
-            print child
+        print prices
