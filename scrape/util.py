@@ -17,8 +17,6 @@ import requests
 from bs4 import BeautifulSoup
 
 def construct_base_url(make, model, year, style):
-    """ Take several arguments and construct a url
-    """
     url = 'http://www.kbb.com/'
 
     url += make + '/'
@@ -29,22 +27,25 @@ def construct_base_url(make, model, year, style):
     return url
 
 
-def construct_parameters(args, optional_parameter):    
-    """ We need some tests up in here!
-    """
+def construct_parameters(args_dictionary, optional_parameter):    
     parameters = {}
 
     for param in optional_parameter:
-        parameters[param] = args.param
+        if args_dictionary[param]:
+            parameters[param] = args_dictionary[param]
 
     return parameters
 
 
 def url_fetch(url, parameters):
-    """ Does this handle 3** and 4** well?
+    """ Does this handle http 3** and 4** well?
     """
     try:
-        return requests.get(url, params=parameters)
+        payload = requests.get(url, params=parameters)
+        if payload.status_code == 200:
+            return payload
+        else:
+            return False
     except Exception:
         return False
 

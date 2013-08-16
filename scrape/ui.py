@@ -4,7 +4,6 @@
 """
 ui
 ~~~~
-
 - parse arguments
 - construct the url
 - test url (will make a request)
@@ -19,7 +18,8 @@ __license__ = "Check root folder LICENSE file"
 __email__ = "andrew.g.dunn@gmail.com"
 
 import argparse
-from scrape.util import construct_base_url
+from scrape.util import construct_base_url, construct_parameters
+from scrape.util import url_fetch
 
 
 def main():
@@ -43,15 +43,19 @@ def main():
     # Construct the base url
     url = construct_base_url(args.make, args.model, args.year, args.style)
 
-    parameters = construct_parameters(args, optional_parameters)
+    # we use the built in command 'vars' to convert the argparse.Namespace
+    # to a standard python dictionary... what even is an argparse.Namespace?
+    parameters = construct_parameters(vars(args), optional_parameters)
 
     url_fetched = url_fetch(url, parameters)
 
-    if url_fetched:
-        """Now we have to:
-         - figure out what parse method to use (based on intent and pricetype)
-         - run said method
-         - add an arg for output type
-         - write output type processing
-        """
-        pass
+    print url_fetched
+
+    # if url_fetched:
+    #     """Now we have to:
+    #      - figure out what parse method to use (based on intent and pricetype)
+    #      - run said method
+    #      - add an arg for output type
+    #      - write output type processing
+    #     """
+    #     pass
