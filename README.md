@@ -1,6 +1,11 @@
 ### scrape-kbb ###
 -------------------------
+The primary goal of the project is to capture Kelly Blue Book (KBB) value information to use ofr depreciation ananalysis.
 
+This will be accomplished by querying KBB for several configuraiton of a particular make and movel of vehicle. Price information is updated weekly on KBB and will be captured on weekly intervals. The program will query the site for the make, model, style (trim), and mileage. The program will capture price information for one of three purchasing intents, and for a variety of vehicle conditions. 
+
+### Design ###
+-------------------------
 Mainly this excercise is to use requests, beautifulsoup, pandas and matplotlib along with collaborating with @nettns who is new to python/github and these technologies.
 
 Specifically it would be nice to do analysis like the following:
@@ -40,11 +45,7 @@ Intent : trade-in-sell
 	pricetype : Private Party (private-party) (?intent=trade-in-sell&amp;pricetype=private-party)
 	yields : List of Prices, [Excellent, Very Good, Good, Fair] 
 
-### Goals ###
------------------------
-The primary goal of the project is to capture Kelly Blue Book (KBB) value information to use ofr depreciation ananalysis.
 
-This wil be accomplished by querying KBB for several configuraiton of a particular make and movel of vehicle. Price information is updated weekly on KBB and will be captured on weekly intervals. The program will query the site for the make, model, style (trim), and mileage. The program will capture price information for one of three purchasing intents, and for a variety of vehicle conditions. 
 
 ### References ###
 * http://www.r-bloggers.com/how-to-buy-a-used-car-with-r-part-1/
