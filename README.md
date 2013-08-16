@@ -14,7 +14,7 @@ Took a while poking around on the site to make the following list. In general th
 
 All base urls appear as:
 
-http://www.kbb.com/&lt;make&rt;/&lt;model&rt;/&lt;year&rt;-&lt;make&rt;-&lt;model&rt;/&lt;style&rt;/
+    http://www.kbb.com/<make>/<model>/<year>-<make>-<model>/<style>/
 
 Intent : buy-new
 * pricetype : none
@@ -22,17 +22,17 @@ Intent : buy-new
 
 Intent : buy-used
 * pricetype : Certified Pre Owned (cpo) (?intent=buy-used&amp;pricetype=cpo)
-** yields : Single Price [Excellent]
+* yields : Single Price [Excellent]
 * pricetype : Suggested Retail (retail) (?intent=buy-used&amp;pricetype=retail)
-** yields : Single Price [Excellent]
+* yields : Single Price [Excellent]
 * pricetype : Private Party (private-party) (?intent=buy-used&amp;pricetype=private-party)
-** yields : List of Prices, [Excellent, Very Good, Good, Fair] Price
+* yields : List of Prices, [Excellent, Very Good, Good, Fair] Price
 
 Intent : trade-in-sell
 * pricetype : Trade In Value (trade-in) (?intent=trade-in-sell&amp;pricetype=trade-in)
-** yields : List of Prices, [Excellent, Very Good, Good, Fair] Price
+* yields : List of Prices, [Excellent, Very Good, Good, Fair] Price
 * pricetype : Private Party (private-party) (?intent=trade-in-sell&amp;pricetype=private-party)
-** yields : List of Prices, [Excellent, Very Good, Good, Fair] Price
+* yields : List of Prices, [Excellent, Very Good, Good, Fair] Price
 
 ### References ###
 * http://www.r-bloggers.com/how-to-buy-a-used-car-with-r-part-1/
