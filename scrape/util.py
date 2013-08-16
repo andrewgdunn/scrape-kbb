@@ -29,13 +29,20 @@ def construct_base_url(make, model, year, style):
     return url
 
 
-def url_fetch(url, intent, mileage):
-    """ Not really ideal, maybe use **kwargs 
+def construct_parameters(args, optional_parameter):    
+    """ We need some tests up in here!
     """
     parameters = {}
-    parameters['pricetype'] = intent
-    parameters['mileage'] = mileage
 
+    for param in optional_parameter:
+        parameters[param] = args.param
+
+    return parameters
+
+
+def url_fetch(url, parameters):
+    """ Does this handle 3** and 4** well?
+    """
     try:
         return requests.get(url, params=parameters)
     except Exception:
@@ -52,7 +59,7 @@ def parse_buy_used(url_payload):
 def parse_trade_in_sell(url_payload):
     prices = []
 
-    soup = BeautifulSoup(url_requested.text)
+    soup = BeautifulSoup(url_payload)
 
     for div in soup.find_all('div', class_='value'):
         prices.append(div.text)

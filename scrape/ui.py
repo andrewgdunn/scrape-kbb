@@ -13,6 +13,7 @@ ui
 
 """
 __author__ = ["Andrew G. Dunn"]
+__credits__ = ["Stephen Nettnin"]
 __copyright__ = __author__
 __license__ = "Check root folder LICENSE file"
 __email__ = "andrew.g.dunn@gmail.com"
@@ -32,6 +33,7 @@ def main():
     parser.add_argument('year', help='Year')
     parser.add_argument('style', help='Style')
     # Optional
+    optional_parameters = ['intent', 'pricetype', 'mileage']
     parser.add_argument('-i', '--intent', dest='intent', help='Intent')
     parser.add_argument('-p', '--pricetype', dest='pricetype', help='Price Type')
     parser.add_argument('-m', '--mileage', dest='mileage', help='Mileage')
@@ -41,10 +43,15 @@ def main():
     # Construct the base url
     url = construct_base_url(args.make, args.model, args.year, args.style)
 
-    parameters = {}
-    parameters['pricetype'] = args.intent
-    parameters['mileage'] = args.mileage
+    parameters = construct_parameters(args, optional_parameters)
 
-    url_requested = requests.get(url, params=parameters)
+    url_fetched = url_fetch(url, parameters)
 
-    if url_requested.status_code == 200:
+    if url_fetched:
+        """Now we have to:
+         - figure out what parse method to use (based on intent and pricetype)
+         - run said method
+         - add an arg for output type
+         - write output type processing
+        """
+        pass
