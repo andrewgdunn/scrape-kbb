@@ -26,12 +26,14 @@ def main():
     description = """Scrape data from KBB"""
 
     parser = argparse.ArgumentParser(description=description)
+    # Positional (pass them in proper order, and yes they are required)
     parser.add_argument('make', help='Make')
     parser.add_argument('model', help='Model')
     parser.add_argument('year', help='Year')
     parser.add_argument('style', help='Style')
-    parser.add_argument('intent', help='Intent')
-    parser.add_argument('mileage', help='Mileage')
+    # Optional
+    parser.add_argument('--intent', dest='pricetype', help='Intent')
+    parser.add_argument('--mileage', dest='mileage', help='Mileage')
 
     args = parser.parse_args()
 

@@ -8,26 +8,28 @@ Specifically it would be nice to do analysis like the following:
  - What is the depreciation curve for a given used vehicle
  - What is the optimal mileage point to sell you used vehicle
 
+### Behavior ###
+Took a while poking around on the site to make the following list. In general the site isn't very clear as to what rabbit hole you have gone down to yield a specific or set of cost(s). There seems to be three intents, outlined below with example option queries and example yields.
 
-### Glossary ###
- - Make: Vehicle Manufacture
- - Model: Relase name of a Vehicle
- - Year: Release year of a Vehicle
- - Style: Trim of the Vehicle
- - Intent: Intent <buy/sell><sup>1 2</sup>
- - Mileage: Self Explanitory
+All base urls appear as: http://www.kbb.com/<make>/<model>/<year>-<make>-<model>/<style>/
 
- <sup>1</sup> Buy Intent 		(key)
-  - Certified Pre Owned 		(cpo)
-  - Suggested Retail 			(retail)
-  - Private Party				(private-party)<sup>3</sup>
- 
- <sup>2</sup> Sell Intent 		(key)
-  - Trade In Value				(trade-in)
-  - Private Party 				(private-party)<sup>3</sup>
+Intent : buy-new
+ - pricetype : none
+-- yields : MSRP, Fair Purchase Price, Dealer Invoice
 
-  <sup>3</sup> Same value, regardless of intent (only difference is page formatting)
+Intent : buy-used
+ - pricetype : Certified Pre Owned (cpo) (?intent=buy-used&pricetype=cpo)
+ -- yields : Single Price [Excellent]
+ - pricetype : Suggested Retail (retail) (?intent=buy-used&pricetype=retail)
+ -- yields : Single Price [Excellent]
+ - pricetype : Private Party (private-party) (?intent=buy-used&pricetype=private-party)
+ -- yields : List of Prices, [Excellent, Very Good, Good, Fair] Price
 
+Intent : trade-in-sell
+ - pricetype : Trade In Value (trade-in) (?intent=trade-in-sell&pricetype=trade-in)
+ -- yields : List of Prices, [Excellent, Very Good, Good, Fair] Price
+ - pricetype : Private Party (private-party) (?intent=trade-in-sell&pricetype=private-party)
+ -- yields : List of Prices, [Excellent, Very Good, Good, Fair] Price
 
 ### References ###
  - http://www.r-bloggers.com/how-to-buy-a-used-car-with-r-part-1/

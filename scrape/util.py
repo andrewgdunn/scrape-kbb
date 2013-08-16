@@ -27,7 +27,18 @@ def construct_base_url(make, model, year, style):
 
     return url
 
-    
+
+def url_fetch(url, intent, mileage):
+    """ Not really ideal, maybe use **kwargs 
+    """
     parameters = {}
-    parameters['pricetype'] = args.type
-    parameters['mileage'] = args.mileage
+    parameters['pricetype'] = intent
+    parameters['mileage'] = mileage
+
+    try:
+        return requests.get(url, params=parameters)
+    except Exception:
+        return False
+
+def parse_buy_new(url_payload):
+    pass
