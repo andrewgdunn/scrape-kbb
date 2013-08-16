@@ -12,26 +12,26 @@ Specifically it would be nice to do analysis like the following:
 -------------------------
 Took a while poking around on the site to make the following list. In general the site isn't very clear as to what rabbit hole you have gone down to yield a specific or set of cost(s). There seems to be three intents, outlined below with example option queries and example yields.
 
-All base urls appear as: 
-	http://www.kbb.com/<make>/<model>/<year>-<make>-<model>/<style>/
+All base urls appear as:
+	http://www.kbb.com/&lt;make&rt;/&lt;model&rt;/&lt;year&rt;-&lt;make&rt;-&lt;model&rt;/&lt;style&rt;/
 
 Intent : buy-new
-	 - pricetype : none
-	 -- yields : MSRP, Fair Purchase Price, Dealer Invoice
+	- pricetype : none
+	- yields : MSRP, Fair Purchase Price, Dealer Invoice
 
 Intent : buy-used
-	 - pricetype : Certified Pre Owned (cpo) (?intent=buy-used&pricetype=cpo)
-	 -- yields : Single Price [Excellent]
-	 - pricetype : Suggested Retail (retail) (?intent=buy-used&pricetype=retail)
-	 -- yields : Single Price [Excellent]
-	 - pricetype : Private Party (private-party) (?intent=buy-used&pricetype=private-party)
-	 -- yields : List of Prices, [Excellent, Very Good, Good, Fair] Price
+	- pricetype : Certified Pre Owned (cpo) (?intent=buy-used&amp;pricetype=cpo)
+	-- yields : Single Price [Excellent]
+	- pricetype : Suggested Retail (retail) (?intent=buy-used&amp;pricetype=retail)
+	-- yields : Single Price [Excellent]
+	- pricetype : Private Party (private-party) (?intent=buy-used&amp;pricetype=private-party)
+	-- yields : List of Prices, [Excellent, Very Good, Good, Fair] Price
 
 Intent : trade-in-sell
-	 - pricetype : Trade In Value (trade-in) (?intent=trade-in-sell&pricetype=trade-in)
-	 -- yields : List of Prices, [Excellent, Very Good, Good, Fair] Price
-	 - pricetype : Private Party (private-party) (?intent=trade-in-sell&pricetype=private-party)
-	 -- yields : List of Prices, [Excellent, Very Good, Good, Fair] Price
+	- pricetype : Trade In Value (trade-in) (?intent=trade-in-sell&amp;pricetype=trade-in)
+	-- yields : List of Prices, [Excellent, Very Good, Good, Fair] Price
+	- pricetype : Private Party (private-party) (?intent=trade-in-sell&amp;pricetype=private-party)
+	-- yields : List of Prices, [Excellent, Very Good, Good, Fair] Price
 
 ### References ###
  - http://www.r-bloggers.com/how-to-buy-a-used-car-with-r-part-1/
