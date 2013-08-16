@@ -18,8 +18,8 @@ __license__ = "Check root folder LICENSE file"
 __email__ = "andrew.g.dunn@gmail.com"
 
 import argparse
-import requests
-from bs4 import BeautifulSoup
+from scrape.util import construct_base_url
+
 
 def main():
 
@@ -32,19 +32,14 @@ def main():
     parser.add_argument('year', help='Year')
     parser.add_argument('style', help='Style')
     # Optional
-    parser.add_argument('--intent', dest='pricetype', help='Intent')
-    parser.add_argument('--mileage', dest='mileage', help='Mileage')
+    parser.add_argument('-i', '--intent', dest='intent', help='Intent')
+    parser.add_argument('-p', '--pricetype', dest='pricetype', help='Price Type')
+    parser.add_argument('-m', '--mileage', dest='mileage', help='Mileage')
 
     args = parser.parse_args()
 
-    # Construct the URL
-    # Example: http://www.kbb.com/kia/optima/2012-kia-optima/ex-sedan-4d/?pricetype=private-party&mileage=25000
-
-    url = 'http://www.kbb.com/'
-    url += args.make + '/'
-    url += args.model + '/'
-    url += args.year + '-' + args.make + '-' + args.model + '/'
-    url += args.style + '/'
+    # Construct the base url
+    url = construct_base_url(args.make, args.model, args.year, args.style)
 
     parameters = {}
     parameters['pricetype'] = args.intent
@@ -53,11 +48,3 @@ def main():
     url_requested = requests.get(url, params=parameters)
 
     if url_requested.status_code == 200:
-        prices = []
-
-        soup = BeautifulSoup(url_requested.text)
-
-        for div in soup.find_all('div', class_='value'):
-            prices.append(div.text)
-
-        print prices

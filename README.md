@@ -14,25 +14,31 @@ Took a while poking around on the site to make the following list. In general th
 
 All base urls appear as:
 
-    http://www.kbb.com/<make>/<model>/<year>-<make>-<model>/<style>/
+    http://www.kbb.com/<make>/<model>/<year>-<make>-<model>/<style>/?intent=<intent>&pricetype=<pricetype>
 
 Intent : buy-new
-* pricetype : none
-* yields : MSRP, Fair Purchase Price, Dealer Invoice
+
+	pricetype : none
+	yields : MSRP, Fair Purchase Price, Dealer Invoice
 
 Intent : buy-used
-* pricetype : Certified Pre Owned (cpo) (?intent=buy-used&amp;pricetype=cpo)
-* yields : Single Price [Excellent]
-* pricetype : Suggested Retail (retail) (?intent=buy-used&amp;pricetype=retail)
-* yields : Single Price [Excellent]
-* pricetype : Private Party (private-party) (?intent=buy-used&amp;pricetype=private-party)
-* yields : List of Prices, [Excellent, Very Good, Good, Fair] Price
+
+	pricetype : Certified Pre Owned (cpo) (?intent=buy-used&amp;pricetype=cpo)
+	yields : Single Price [Excellent]
+	
+	pricetype : Suggested Retail (retail) (?intent=buy-used&amp;pricetype=retail)
+	yields : Single Price [Excellent]
+	
+	pricetype : Private Party (private-party) (?intent=buy-used&amp;pricetype=private-party)
+	yields : List of Prices, [Excellent, Very Good, Good, Fair] 
 
 Intent : trade-in-sell
-* pricetype : Trade In Value (trade-in) (?intent=trade-in-sell&amp;pricetype=trade-in)
-* yields : List of Prices, [Excellent, Very Good, Good, Fair] Price
-* pricetype : Private Party (private-party) (?intent=trade-in-sell&amp;pricetype=private-party)
-* yields : List of Prices, [Excellent, Very Good, Good, Fair] Price
+
+	pricetype : Trade In Value (trade-in) (?intent=trade-in-sell&amp;pricetype=trade-in)
+	yields : List of Prices, [Excellent, Very Good, Good, Fair] 
+	
+	pricetype : Private Party (private-party) (?intent=trade-in-sell&amp;pricetype=private-party)
+	yields : List of Prices, [Excellent, Very Good, Good, Fair] 
 
 ### References ###
 * http://www.r-bloggers.com/how-to-buy-a-used-car-with-r-part-1/

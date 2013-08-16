@@ -9,9 +9,11 @@ for looking through the bs4 object its easier to use ipython
 
 """
 __author__ = ["Andrew G. Dunn"]
+__credits__ = ["Stephen Nettnin"]
 __copyright__ = __author__
 __license__ = "Check root folder LICENSE file"
 __email__ = "andrew.g.dunn@gmail.com"
+
 
 import requests
 from bs4 import BeautifulSoup
