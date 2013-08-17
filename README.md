@@ -1,6 +1,6 @@
 ### scrape-kbb ###
 -------------------------
-The primary goal of the project is to capture Kelly Blue Book (KBB) value information to use ofr depreciation ananalysis.
+The primary goal of the project is to capture Kelly Blue Book (KBB) value information to use for depreciation ananalysis.
 
 This will be accomplished by querying KBB for several configuraiton of a particular make and movel of vehicle. Price information is updated weekly on KBB and will be captured on weekly intervals. The program will query the site for the make, model, style (trim), and mileage. The program will capture price information for one of three purchasing intents, and for a variety of vehicle conditions. 
 

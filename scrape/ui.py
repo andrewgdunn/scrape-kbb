@@ -20,6 +20,7 @@ __email__ = "andrew.g.dunn@gmail.com"
 import argparse
 from scrape.util import construct_base_url, construct_parameters
 from scrape.util import url_fetch
+from scrape.util import parse_new, parse_single, parse_list
 
 
 def main():
@@ -49,13 +50,20 @@ def main():
 
     url_fetched = url_fetch(url, parameters)
 
-    print url_fetched
+    if url_fetched:
+        """ Not super elegant, nice to make more than one comparison per
+        conditional statement.
 
-    # if url_fetched:
-    #     """Now we have to:
-    #      - figure out what parse method to use (based on intent and pricetype)
-    #      - run said method
-    #      - add an arg for output type
-    #      - write output type processing
-    #     """
-    #     pass
+        Need to think through:
+         - output formats
+        """
+        if not args.pricetype:
+            print parse_new(url_fetched.text)
+        if args.pricetype == 'cpo':
+            print parse_single(url_fetched.text)
+        if args.pricetype == 'retail':
+            print parse_single(url_fetched.text)
+        if args.pricetype == 'trade-in':
+            print parse_list(url_fetched.text)
+        if args.pricetype == 'private-party':
+            print parse_list(url_fetched.text)

@@ -38,8 +38,6 @@ def construct_parameters(args_dictionary, optional_parameter):
 
 
 def url_fetch(url, parameters):
-    """ Does this handle http 3** and 4** well?
-    """
     try:
         payload = requests.get(url, params=parameters)
         if payload.status_code == 200:
@@ -49,20 +47,23 @@ def url_fetch(url, parameters):
     except Exception:
         return False
 
-def parse_buy_new(url_payload):
-    pass
+def parse_new(url_payload):
+    return 'taco'
 
 
-def parse_buy_used(url_payload):
-    pass
+def parse_single(url_payload):
+    soup = BeautifulSoup(url_payload)
+
+    div = soup.find('div', class_='value')
+    return div.text.strip()
 
 
-def parse_trade_in_sell(url_payload):
+def parse_list(url_payload):
     prices = []
 
     soup = BeautifulSoup(url_payload)
 
     for div in soup.find_all('div', class_='value'):
-        prices.append(div.text)
+        prices.append(div.text.strip())
 
-    print prices
+    return prices
