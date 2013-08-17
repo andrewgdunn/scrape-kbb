@@ -56,9 +56,15 @@ def main():
 
         Need to think through:
          - output formats
+         - using intent also, because pricetype ins't enough:
+          - - check out:
+          http://www.kbb.com/kia/optima/2013-kia-optima/ex/
+          http://www.kbb.com/kia/optima/2013-kia-optima/ex-sedan-4d/
+
+          Neither of these things use an intent or pricetype and they are the same platform with the same trim level....
         """
         if not args.pricetype:
-            print parse_new(url_fetched.text)
+            print parse_single(url_fetched.text)
         if args.pricetype == 'cpo':
             print parse_single(url_fetched.text)
         if args.pricetype == 'retail':
